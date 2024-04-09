@@ -8,14 +8,15 @@ import {
   Text
 } from '@tremor/react';
 
-interface User {
+interface Student {
   id: number;
-  name: string;
+  firstName: string;
+  lastName: string;
   username: string;
   email: string;
 }
 
-export default function UsersTable({ users }: { users: User[] }) {
+export default function UsersTable({ users }: { users: Student[] }) {
   return (
     <Table>
       <TableHead>
@@ -23,17 +24,21 @@ export default function UsersTable({ users }: { users: User[] }) {
           <TableHeaderCell>Name</TableHeaderCell>
           <TableHeaderCell>Username</TableHeaderCell>
           <TableHeaderCell>Email</TableHeaderCell>
+          <TableHeaderCell>ID</TableHeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>
         {users.map((user) => (
           <TableRow key={user.id}>
-            <TableCell>{user.name}</TableCell>
+            <TableCell>{user.lastName + ", " + user.firstName}</TableCell>
             <TableCell>
               <Text>{user.username}</Text>
             </TableCell>
             <TableCell>
               <Text>{user.email}</Text>
+            </TableCell>
+            <TableCell>
+              <Text>{user.id}</Text>
             </TableCell>
           </TableRow>
         ))}
